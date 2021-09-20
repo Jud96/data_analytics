@@ -1,0 +1,1285 @@
+---
+title: "Cyclistic bike-share analysis case study"
+author: " Abdulmajid Bakro"
+date: "16/9/2021"
+output: html_notebook
+---
+
+## scenario 
+
+You are  data analyst working in the marketing analyst team at Cyclistic, a bike-share company in Chicago. The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore,your team wants to understand how casual riders and annual members use Cyclistic bikes differently. From these insights,your team will design a new marketing strategy to convert casual riders into annual members. But first, Cyclistic executives must approve your recommendations, so they must be backed up with compelling data insights and professional data visualizations. <br />
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## Characters and teams
+● **Cyclistic**: A bike-share program that features more than 5,800 bicycles and 600 docking stations. Cyclistic sets itself apart by also offering reclining bikes, hand tricycles, and cargo bikes, making bike-share more inclusive to people with disabilities and riders who can’t use a standard two-wheeled bike. The majority of riders opt for traditional bikes; about8% of riders use the assertive options. Cyclistic users are more likely to ride for leisure, but about 30% use them to commute to work each day. <br />
+● **Lily Moreno**: The director of marketing and your manager. Moreno is responsible for the development of campaign sand initiatives to promote the bike-share program. These may include email, social media, and other channels. <br />
+●**Cyclistic marketing analytics team**: A team of data analysts who are responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy. You joined this team six months ago and have been busy learning about Cyclistic’s mission and business goals — as well as how you, as a junior data analyst, can help Cyclistic achieve them.  <br />
+● **Cyclistic executive team**: The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program. <br />
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## About the company
+In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The bikes can be unlocked from one station and returned to any other station in the system anytime.<br />
+
+Until now, Cyclistic’s marketing strategy relied on building general awareness and appealing to broad consumer segments. One approach that helped make these things possible was the flexibility of its pricing plans: single-ride passes, full-day passes, and annual memberships. Customers who purchase single-ride or full-day passes are referred to as casual riders. Customers who purchase annual memberships are Cyclistic members.<br />
+
+Cyclistic’s finance analysts have concluded that annual members are much more profitable than casual riders. Although the pricing flexibility helps Cyclistic attract more customers, Moreno believes that maximizing the number of annual members will be key to future growth. Rather than creating a marketing campaign that targets all-new customers, Moreno believes there is a very good chance to convert casual riders into members. She notes that casual riders are already aware of the Cyclistic program and have chosen Cyclistic for their mobility needs.<br />
+
+Moreno has set a clear goal: Design marketing strategies aimed at converting casual riders into annual members. In order to do that, however, the marketing analyst team needs to better understand how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics. Moreno and her team are interested in analyzing the Cyclistic historical bike trip data to identify trends.<br />
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+
+</style>
+## scope of work (sow)
+
+### Client/Sponsor:
+  Lily Moreno/Cyclistic executive team
+
+### Purpose:
+
+  1- difference between casual and member customer <br />
+  2- increase number of member <br />
+  3- best way to advertise campaign <br />
+  
+### Scope / Major Project Activities: 
+  
+<table >
+  <tr >
+    <th style="width:30%">Activity </th>
+    <th style="width:70%">description</th>
+  </tr >
+    <tr >
+    <td>prepare </td>
+    <td>prepare data,test Roccc,integrity,privacy,achieve goals,problems</td>
+  </tr>
+  <tr >
+    <td>process</td>
+    <td>clean  and manipulation data </td>
+   
+  </tr>
+  <tr>
+    <td>analyse and visualization </td>
+    <td>summary of analysis using summary,pivot tables ,...,visualization and key findings </td>
+  </tr>
+   <tr >
+    <td>recommendations </td>
+    <td>summary of key findings, recommendation and future work </td>
+  </tr>
+</table>  
+
+### This project does not include:
+● No  data older than 1 years will be considered in the project
+
+ 
+
+## deliverables:
+1.A clear statement of the business task <br />
+2.A description of all data sources used <br />
+3.Documentation of any cleaning or manipulation of data <br />
+4.A summary of your analysis <br />
+5.Supporting visualizations and key findings <br />
+6.Your top three recommendations based on your analysis <br />
+
+
+## Schedule Overview / Major Milestones:
+The expected schedule for the project. This can be defined by milestones (e.g. “all data is cleaned and
+processed”), periods of time (“Week 2”), or other ways based on the needs of the project.
+<table >
+  <tr >
+    <th style="width:22%">Milestone </th>
+    <th style="width:22%">Completion Date</th>
+    <th style="width:56%">Description/Details</th>
+   </tr>
+   <tr >
+    <td> sow and ask phase  </td>
+    <td> 13/9/2021 </td>
+    <td>scope of work and questions related to business goals </td>
+  </tr>
+ <tr >
+    <td> prepared data </td>
+    <td> 15/9/2021 </td>
+    <td> get data and test it </td>
+  </tr>
+   <tr >
+    <td> process data </td>
+    <td> 17/9/2021 </td>
+    <td> clean  and manipulation data </td>
+  </tr>
+   <tr >
+    <td> analysis and visualization  data </td>
+    <td> 23/9/2021 </td>
+    <td> clean  and manipulation data </td>
+  </tr>
+    <tr >
+    <td> key finding and recommandations </td>
+    <td> 25/9/2021 </td>
+    <td> clean  and manipulation data </td>
+  </tr>
+</table> 
+
+### Estimated date for completion:
+This is my “if all goes well and I have everything I need, this is when I’ll be done” date.<br />
+13/9/ 2021 
+Abdulmajid Bakro
+
+ <hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+ 
+## Ask
+Three questions will guide the future marketing program:<br />
+ 1. How do annual members and casual riders use Cyclistic bikes differently?<br />
+ 2. Why would casual riders buy Cyclistic annual memberships?<br />
+ 3. How can Cyclistic use  media to influence casual riders to become members?<br />
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## libraries 
+```{r}
+library(readr)             # read data
+library(tidyr)             # Tidy data
+library(ggplot2)           #viz
+library(skimr)             # summary data 
+library(janitor)           # clean data
+library(dplyr)             #manipulation
+library (sf)               # maps
+library(maps)              # maps
+library(ggmap)             # maps
+library(geosphere)         # maps
+library(pivottabler)       # pivot tables
+```
+
+
+```{r}
+
+border <- c(
+  left = -87.700424,
+  bottom = 41.790769,
+  right = -87.554855,
+  top = 41.990119
+)
+chicago_stamen <- get_stamenmap(
+  # left ,bottom ,right ,top
+  bbox = border,
+  zoom = 12,
+  maptype = "toner"
+)
+```
+
+
+
+## exploration the data 
+
+first discover the pattern of data for small group and than go deeper and final thing merging 
+the whole 12 months and do the process and answer the next question 
+
+1- where is data located ? <br />
+2- how is the data organized ? <br />
+3- are there issues with credibility or bias ? <br />
+4- reliable organization, comprehensive, current, and cited ? <br />
+5- privacy and security <br />
+6- verify data integrity <br />
+7- how does it help you to answer your questions  <br />
+8- are there any problem with the data  ? <br />
+
+
+## 1- where is data located ?
+ **source of data: **   <https://divvy-tripdata.s3.amazonaws.com/index.html> <br />
+ **licence: ** <https://www.divvybikes.com/data-license-agreement>  <br />
+ 
+##  before merging
+1- make summary about every months <br />
+2- make portion data faster to implementation for sampling for two month high 
+   and low  records<br />
+
+##  merge data
+
+To join two data frames (datasets) vertically, use the rbind function. The two data frames must have the same variables, but they do not have to be in the same order.
+total <- rbind(data frameA, data frameB)
+
+### read the data 
+
+```{r}
+m1 <-read_csv("tripdata_2020_08.csv",show_col_types = FALSE)
+m2 <-read_csv("tripdata_2020_09.csv",show_col_types = FALSE)
+m3 <-read_csv("tripdata_2020_10.csv",show_col_types = FALSE)
+m4 <-read_csv("tripdata_2020_11.csv",show_col_types = FALSE)
+m5 <-read_csv("tripdata_2020_12.csv",show_col_types = FALSE)
+m6 <-read_csv("tripdata_2021_01.csv",show_col_types = FALSE)
+m7 <-read_csv("tripdata_2021_02.csv",show_col_types = FALSE)
+m8 <-read_csv("tripdata_2021_03.csv",show_col_types = FALSE)
+m9 <-read_csv("tripdata_2021_04.csv",show_col_types = FALSE)
+m10 <-read_csv("tripdata_2021_05.csv",show_col_types = FALSE)
+m11 <-read_csv("tripdata_2021_06.csv",show_col_types = FALSE)
+m12 <-read_csv("tripdata_2021_07.csv",show_col_types = FALSE)
+
+# make summary and try on one before merging 
+#summary(m1) ... str(m1)
+
+annualtrip <- rbind(m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11, m12)
+# clean memory process annualtrip only we can analyse one as sample easier/quicker 
+# and than the complete data 
+rm(m1) 
+rm(m2)
+rm(m3)
+rm(m4)
+rm(m5)
+rm(m6)
+rm(m7)
+rm(m8)
+rm(m9)
+rm(m10)
+rm(m11)
+rm(m12)
+
+
+```
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## how is the data organized ?
+## structure of data {.tabset}
+
+### summary
+```{r}
+summary(annualtrip)
+```
+### structure
+```{r }
+str(annualtrip)
+```
+
+### clean_names
+```{r}
+clean_names(annualtrip)
+annualtrip <- rename(annualtrip,bicycle_type = rideable_type)
+annualtrip <- rename(annualtrip,customer_type = member_casual)
+```
+
+
+### head of data
+
+```{r}
+annualtrip <- annualtrip %>% arrange(started_at)
+head(annualtrip)
+```
+
+
+## {-}
+## 3- are there issues with credibility or bias ?
+
+credibility : okay capture way using credit and GPS <br />
+bias  : there are no bias because it is sampling all community 
+        making bike-share more inclusive to people with
+        disabilities and riders who can’t use a standard two-wheeled bike
+
+## 4- reliable organization, comprehensive, current, and cited ?
+
+reliable accurate,complete, unbaised info and fit for use <br /> 
+(looking summary- capture method )                         ok <br />
+original  from the company first source                    ok <br />
+comprehensive (limited because of privacy)                 ok <br />
+current (last 12 month)                                    ok <br />
+
+
+## 5- privacy and security
+
+This is public data that you can use to explore how different customer types are
+using Cyclistic bikes. But note that data-privacy issues prohibit you from using riders’ personally identifiable information. This means that you won’t be able to connect pass purchases to credit card numbers to determine if casual riders live in theCyclistic service area or if they have purchased multiple single passes.<br /> 
+
+ **licence : **  https://www.divvybikes.com/data-license-agreement 
+ 
+ 
+## 6- verify data integrity {.tabset}
+
+
+### 6.1- show type 
+```{r}
+
+head(annualtrip)
+```
+ 
+### 6.2- ride_id 
+ ride_id is primary key  constraint          ok
+ number of data 4731081  <br />
+ unique data    4730872 <br />
+ remove duplicate should be in clean process but it's ok  <br />
+ 
+```{r}
+  
+  annualtrip %>% distinct(ride_id ) %>%  count() # 4730872
+annualtrip <- annualtrip[!duplicated(annualtrip[ , c("ride_id")]),]
+ 
+```
+
+### 6.3- bicycle type
+
+there are three types
+```{r}
+  annualtrip %>% distinct(bicycle_type ) # 3
+```
+### 6.4- started_at,ended_at 
+
+1- started_at and ended_at  from summary  <br />
+2- there are some ride_length very long it's remarkable so that ask stakeholder ?? <br />
+3- should time be in range of study <br />
+
+```{r}
+annualtrip <- annualtrip %>% 
+    filter(between(started_at, as.POSIXct('2020-08-01') , as.POSIXct('2021-08-01') ))
+
+```
+
+4- should always be end > start but there are wrong values so that <br /> 
+you should delete them (we have notice 7931 record ,what is the root reason for this problem ??) <br />
+
+```{r}
+ t<- annualtrip %>% select(started_at,ended_at) %>%  filter(started_at > ended_at) %>% count()
+  ## clean data where  all end > start
+  annualtrip<- annualtrip %>%  filter(started_at < ended_at)
+```
+
+##  {-}
+
+
+
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## {.tabset}
+### 6.5- start station 
+
+another constraint start end station name there are 738 station but that is over time
+ stations changed to make better service for customers but in my opinion a good way to 
+ have a separate table for station (id,name,avg traffic/day,lng,lat,validfrom,validto)
+ so that  better integrity  and data quality 
+there are null values because user can park anywhere!!??
+
+**inconsistent data** 
+```{r}
+
+  annualtrip %>% distinct(start_station_id)      #  1288
+  annualtrip %>% count(is.na(start_station_id))  # 369749 are null
+  annualtrip %>% distinct(start_station_name) %>% drop_na()      #  738
+ temp <- annualtrip %>% distinct(trimws(tolower(start_station_name)))  #  739
+
+  annualtrip %>% count(is.na(start_station_name))  # 369127		 are null
+  
+ 
+
+  
+ 
+```
+### 6.6- end stations 
+```{r}
+  annualtrip %>% distinct(end_station_id)      #  1287
+  annualtrip %>% count(is.na(end_station_id))  # 407425	 are null
+  annualtrip %>% distinct(end_station_name)      #  736
+  annualtrip %>% count(is.na(end_station_name))  # 406966		 are null
+```
+
+we can do enrichment to closet station when value is null
+this is big question enrichment to actual stations that is in last week 
+when we process more data we have more 10000 station but we are interest in is only
+actual stations ,it's important to enrich for this stations 
+
+```{r}
+ annualtrip %>% filter(started_at > as.POSIXct("2021-07-01")) %>% drop_na() %>%     group_by(start_station_name) %>% count()   # 711 stations in the last month
+```
+
+
+###  6.7- distribution start points 
+the best way to show where is the data located depend on lat,lag on map
+depend on map every points is in range of Chicago  
+we can see in all us or by seeing in range so that we have better insight of data distribution 
+```{r}
+MainStates <- map_data("state")
+
+
+ xmin <- min(annualtrip$start_lng)
+ xmax<- max(annualtrip$start_lng)
+ ymin <- min(annualtrip$start_lat)
+ ymax<- max(annualtrip$start_lat)
+ 
+ggplot() + 
+  geom_polygon( data=MainStates, aes(x=long, y=lat, group=group),
+                color="black", fill="lightblue" )+
+  geom_point(data=annualtrip, aes(x=start_lng, y= start_lat),color='darkblue')+ coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE) + labs(title = "distribution start points ")
+
+```
+
+###  6.8- distribution end points 
+```{r}
+
+ggplot() + 
+  geom_polygon( data=MainStates, aes(x=long, y=lat, group=group),
+                color="black", fill="lightblue" )+
+  geom_point(data=annualtrip, aes(x=end_lng, y= end_lat),color='darkblue')+ coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE)+ labs(title = "distribution end points ")
+
+rm(MainStates)
+```
+### 6.9-  users
+
+there are two type of users
+
+
+```{r}
+annualtrip %>% distinct(customer_type)
+
+```
+
+## {-}
+
+**this steps give you an idea to next steps in clean data**
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+
+
+
+
+## 7- how does it help you to answer your questions 
+start_time ,end_time ==> ride_length(minutes) , week_of_day
+      ==> how difference usual and member users
+      * summary tables row customer_type and columns count_of_tours,min,max,std,var
+      * summary tables row customer_types and columns ride_length values count_of_tours
+      * summary tables row customer_types and columns week_of_day,months and seasons values count_of_tours,avg_ride_length
+      * customer type and bicycle types
+  to attract already customer we don't need to media digital but in my opinion poster
+  where traffic (in and out ) from station is big (what is better digital or poster ads)?? 
+
+```{r}
+t <- annualtrip %>%   group_by(start_station_name) %>% drop_na() %>% 
+   summarise( traffic = n() , lat = mean(start_lat),lng = mean(start_lng))
+
+
+```
+
+## 8- are there any problem with the data  ?
+1- there are duplicated data that removed
+2- there are a few values end_time < start_time that filter only data that end >start 
+    there are ride_length very long communicate with stakeholder !! monitor data is good to ensure
+    data quality
+3- data types start_station_id,end_station_id are char
+              it's a good idea to make another table that include actual stations and their name 
+              and here deal only with numbers it's similar to find and replace
+              and save a lot of storage (future work or next steps)
+3-  there are  stations that may add it recently but there are no info about lng ,lat 
+          so that there are a lot of unlabeled (source of error) so that we should ask stakeholder
+4- null values there is a way to include this ride to closest stations (future work)
+   this is link to it
+   <https://stackoverflow.com/questions/27442506/find-nearest-points-of-latitude-and-longitude-from-different-data-sets-with-diff>
+5- we notice the traffic is different  distribution of stations is important 
+   so that we can define our poster location and time of this poster with biggest chance 
+   to change mind of our customer (many views winter is different from summer)
+    
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+
+# process
+before merging data process only for one month
+
+1- have you ensured your data's integrity 
+2- steps  to ensure clean data
+3- verify your data is clean and ready to analyse
+4- manipulation data to achieve goals 
+
+### data integrity and clean depend on each others
+### checklist 
+
+
+### 2.1 type of data   ok
+but for better performance we add new table for station id,name
+and in our data contain only id number value that provide good
+performance to fetch data,process data and storage same thing 
+on type of customers and id number is better also
+
+
+  col_name                type        range_data
+ "ride_id"                character       ok       
+"bicycle_type"            character       ok    
+"started_at"              datum           ok
+"ended_at"                datum           ??  
+"start_station_name"      character       station table!!
+ "start_station_id"       character       station table!! there are some don't have id yet
+ "end_station_name"       character       station table!!
+ "end_station_id"         character       station table!!   
+  "start_lat"             double          ok
+ "start_lng"              double          ok  
+ "end_lat"                double          ok  
+ "end_lng"                double          ok      
+ "customer_type"          character       ok 
+
+#### 2.2 range of data
+ we have discuss that in data integrity step 
+
+#### 2.3 duplicate data  no 
+  using primary key
+  
+#### outdated data  no 
+    data is actual last 12 month (1-8-2020 ==> 31-7-2021) 
+    
+#### incomplete data  yes
+   but the most important data is completed user-type,begin,end for this task
+   any way in future tasks we can enrichment data 
+   the main question what is source of error why there are incomplete ?
+   
+#### incorrect data 
+  length_ride where there are some records ended_at is more than range ??
+  data should include only end >start
+  
+```{r}
+annualtrip <- filter(annualtrip,started_at < ended_at)
+```
+
+#### inconsist data   yes 
+there are start_station_id ,end_station_id that should contain only numbers
+but we will fix it <br />
+
+### basics of cleaning data
+1- spell checking  <br />
+2- remove duplicate rows <br />
+3- finding and replacing text <br />
+4- changing case of text  <br />
+5- removing spaces and non-printing characters for text <br />
+6- fixing date and time  <br />
+7- merging and splitting cols <br />
+8-transforming and rearranging cols,rows <br />
+9- reconciling table data by joining or matching  <br />
+
+ what is important in our project ? <br />
+3- finding and replacing text <br />
+8-transforming and rearranging cols,rows <br />
+
+
+#### stations tables 
+```{r}
+t <- annualtrip %>% group_by(start_station_name) %>% count()
+stations <-  annualtrip %>%  group_by(start_station_name)  %>% drop_na() %>%  summarise(lat = mean(start_lat),lng = mean(start_lng)) %>% right_join(t,by = 'start_station_name' )  
+stations <- rename(stations ,traffic =n)
+stations <- arrange(stations,desc(traffic)) 
+# we have drop nullvalues because we don't have connect with stakeholder 
+stations <-  stations %>% drop_na()
+id <- c(1: nrow(stations))
+stations <- data.frame(id, stations)
+
+head(stations)
+```
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+##  enrichment {.tabset}
+
+### enrichment for start stations
+1- search null values for start stations and go to interested area of data in this 
+  task start_lat,start_lng(selection) and same data lat,lng from station 
+  our task will add new col to t table that contain closest station to it 
+```{r}
+nullvalues <- annualtrip %>% filter(is.na(start_station_name))
+t <- nullvalues %>% select(start_lat,start_lng)   # %>%  slice(1:10)
+temp <- stations %>% select(lat,lng)   %>%  drop_na()
+
+```
+
+2- enrichment them to closet station 
+ in end t is #nullvalues records lat,lng,closet_station_number
+**Error: cannot allocate vector of size 829.7 Mb**
+**i can't use one statement to do work because of error**
+```{r}
+library(rgeos)
+library(sp)
+
+#head(set1sp)
+set2sp <- SpatialPoints(temp)
+#head(set2sp)
+
+set1sp <- SpatialPoints(t[1:100000,]) 
+t2 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #1:100000
+set1sp <- SpatialPoints(t[100001:200000,])
+t3 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #100001:200000
+set1sp <- SpatialPoints(t[200001:300000,])
+t5 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #200001:300000
+set1sp <- SpatialPoints(t[300001:368764,])
+t4 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #300001:406506
+closerstation1 <- as.data.frame(t2)
+closerstation1 <- rename(closerstation1,closeststation = t2)
+closerstation2 <- as.data.frame(t3)
+closerstation2 <- rename(closerstation2 ,closeststation = t3)
+closerstation3 <- as.data.frame(t4)
+closerstation3 <- rename(closerstation3 ,closeststation = t4)
+closerstation4 <- as.data.frame(t5)
+closerstation4 <- rename(closerstation4 ,closeststation = t5)
+
+closerstation  <- rbind(closerstation1,closerstation2,closerstation3,closerstation4)
+rm(closerstation1)
+rm(closerstation2)
+rm(closerstation3)
+rm(closerstation4)
+
+t <- data.frame(t, closerstation)
+# write.csv(t,"c.csv",row.names = FALSE)
+```
+
+make t + nullvalues ==> einrichment data
+
+```{r}
+nullvalues <- data.frame(nullvalues, t)
+einrichmentvalues <-nullvalues %>%  select(ride_id,bicycle_type,started_at,ended_at,start_station_name,closeststation,end_station_name,end_station_id,start_lat,start_lng,end_lat,end_lng,customer_type)
+rm(nullvalues)
+einrichmentvalues <- einrichmentvalues %>%  rename(start_station_id = closeststation)
+```
+
+clean memory 
+
+```{r}
+rm(set1sp)
+rm(set2sp)
+rm(t2)
+rm(id)
+rm(t3)
+rm(t4)
+rm(t5)
+```
+
+
+  joins temp table that contain data without null values and select cols that same of 
+  original data  and bind data
+  
+```{r}
+
+temp <-annualtrip  %>% inner_join(stations,by = 'start_station_name') 
+colnames(temp)
+temp <- temp %>% select(ride_id,bicycle_type,started_at,ended_at,start_station_name,id,end_station_name,end_station_id,start_lat,start_lng,end_lat,end_lng,customer_type)
+temp <- temp %>% rename(start_station_id =id)
+
+
+
+annualtrip <- rbind(temp,einrichmentvalues)
+# to ensure that we have same data lost one value 
+annualtrip %>% distinct(ride_id) %>% count()
+
+
+rm(einrichmentvalues)
+         
+```
+#### congrats we have consist and complete data lets go to end station 
+
+
+### enrichment for end stations
+ensures do it for small samples first and than ...
+1- search null values for start stations but we work know with data table
+```{r}
+nullvalues <- annualtrip %>% filter(is.na(end_station_name))
+t <- nullvalues %>% select(start_lat,start_lng)   # %>%  slice(1:10)
+temp <- stations %>% select(lat,lng)   %>%  drop_na()
+
+```
+
+2- enrichment them to closet station 
+ in end t is #nullvalues records lat,lng,closet_station_number
+ actually this process can take long time and i have no response so that 
+ i have make parts we can use for 
+```{r}
+library(rgeos)
+library(sp)
+
+
+set2sp <- SpatialPoints(temp)
+
+set1sp <- SpatialPoints(t[1:100000,]) 
+t2 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #1:100000
+set1sp <- SpatialPoints(t[100001:200000,])
+t3 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #100001:200000
+set1sp <- SpatialPoints(t[200001:300000,])
+t5 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #200001:300000
+set1sp <- SpatialPoints(t[300001:406506,])
+t4 <- apply(gDistance( set2sp,set1sp, byid = TRUE), 1, which.min) #300001:406506
+closerstation1 <- as.data.frame(t2)
+closerstation1 <- rename(closerstation1,closeststation = t2)
+closerstation2 <- as.data.frame(t3)
+closerstation2 <- rename(closerstation2 ,closeststation = t3)
+closerstation3 <- as.data.frame(t4)
+closerstation3 <- rename(closerstation3 ,closeststation = t4)
+closerstation4 <- as.data.frame(t5)
+closerstation4 <- rename(closerstation4 ,closeststation = t5)
+
+closerstation  <- rbind(closerstation1,closerstation2,closerstation3,closerstation4)
+rm(closerstation1)
+rm(closerstation2)
+rm(closerstation3)
+rm(closerstation4)
+
+t <- data.frame(t, closerstation)
+#write.csv(t,"d.csv",row.names = FALSE)   # we don't have to do that but because of no response
+```
+
+make t + nullvalues ==> einrichment data
+
+```{r}
+nullvalues <- data.frame(nullvalues, t)
+einrichmentvalues <-nullvalues %>%  select(ride_id,bicycle_type,started_at,ended_at,start_station_name,start_station_id,end_station_name,closeststation,start_lat,start_lng,end_lat,end_lng,customer_type )
+rm(nullvalues)
+einrichmentvalues <- einrichmentvalues %>%  rename(end_station_id = closeststation)
+```
+
+clean memory 
+
+```{r}
+rm(set1sp)
+rm(set2sp)
+rm(t5)
+rm(t4)
+rm(t3)
+rm(t2)
+
+```
+
+
+  joins temp table that contain data without null values and select cols that same of 
+  original data  and bind data
+  
+```{r}
+ stations <- stations %>%  rename(end_station_name = start_station_name)
+temp <- annualtrip %>% inner_join(stations,by = 'end_station_name') 
+#colnames(temp)
+temp <- temp %>% select(ride_id,bicycle_type,started_at,ended_at,start_station_name,start_station_id,end_station_name,id,start_lat,start_lng,end_lat,end_lng,customer_type)
+temp <- temp %>% rename(end_station_id =id)
+
+
+annualtrip <- rbind(temp,einrichmentvalues)
+# to ensure that we have same data 5 records lost 
+annualtrip %>% distinct(ride_id) %>% count()
+
+rm(t)
+rm(temp)   
+rm(einrichmentvalues)
+rm(closerstation)
+```
+
+## {-}
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+####  bicycle_types tables
+```{r}
+
+  bicycle_type <- annualtrip %>% distinct(bicycle_type)
+  id <- c(1:nrow(bicycle_type))
+  bicycle_type <- data.frame(id,bicycle_type)
+ 
+```
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+#### little experiment 
+  we can do find and replace to save storage and deal with numeric values provide
+  best performance than char/strings  and analyse size <br />
+  
+  we have test for small samples and ensure result by monitoring data and 
+  than apply that <br />
+
+  we can make temporary variable with sampling to testing and than 
+  verify the result with predicted results when verifying than we
+  do this for complete data. <br />
+ 
+
+```{r}
+ 
+
+customer_type = annualtrip %>% distinct(customer_type)
+id <- c(1:nrow(customer_type))
+customer_type <- data.frame(id,customer_type)
+ index = sample(1:nrow(annualtrip),1000)
+
+  temp <- as.data.frame(annualtrip$customer_type ) %>%  rename( customer_type="annualtrip$customer_type")
+  
+  s = object.size(temp$customer_type)/(1024*1024)  # 36
+  colnames(temp)
+  for( i in 1:nrow(customer_type))
+  {
+     temp$customer_type[temp$customer_type == customer_type$customer_type[i]] <-  
+       customer_type$id[i]
+  }
+
+ temp$customer_type <- as.integer( temp$customer_type) 
+s = object.size(temp$customer_type)/(1024*1024) # in 18 mb
+rm(temp)
+
+```
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## traffic movement 
+```{r}
+coordinates_table <- annualtrip %>% 
+  filter(start_lng != end_lng & start_lat != end_lat) %>% 
+group_by(start_lng, start_lat, end_lng, end_lat,customer_type) %>%
+summarise(total = n(),.groups="drop") %>%
+filter(total > 250)
+
+casual <- coordinates_table %>% filter(customer_type == "casual")
+member <- coordinates_table %>% filter(customer_type == "member")
+```
+
+
+
+##  {.tabset}
+
+### popular routes by casual users
+```{r}
+
+ggmap(chicago_stamen,darken = c(0.8, "white")) +
+ geom_curve(casual, mapping = aes(x = start_lng, y = start_lat, xend = end_lng, yend = end_lat, alpha= total, color=customer_type), size = 0.5, curvature = .2,arrow = arrow(length=unit(0.2,"cm"), ends="first", type = "closed")) +
+    coord_cartesian() +
+    labs(title = "Most popular routes by casual users",x=NULL,y=NULL, color="User type", caption = "Data by Motivate International Inc") +
+    theme(legend.position="none")
+
+
+```
+
+### popular routes by member users
+```{r}
+ggmap(chicago_stamen,darken = c(0.8, "white")) +
+    geom_curve(member, mapping = aes(x = start_lng, y = start_lat, xend = end_lng, yend = end_lat, alpha= total, color=customer_type), size = 0.5, curvature = .2,arrow = arrow(length=unit(0.2,"cm"), ends="first", type = "closed")) +  
+    coord_cartesian() +
+    labs(title = "Most popular routes by annual members",x=NULL,y=NULL, caption = "Data by Motivate International Inc") +
+    theme(legend.position="none")
+```
+
+
+## {-}
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+#### selecting data 
+drop name of station end and start and coordinates because we don't need them more 
+in processing or analyzing stage <br />
+
+**we can make more segmentation** <br />
+ 1. seg1 for customer_type,bicycle_type,ride_id <br />
+ 2. seg2 customer_type,started_at,ended_at,ride_id
+ 3. seg3 for start_station_id and end_station_id,ride_id
+
+
+```{r}
+
+annualtrip <- annualtrip[ -c(5,7,9:12) ]
+colnames(annualtrip)
+
+```
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+##mutate date 
+add two important cols that help us ride_length,week_of_day and ordered this depend on
+levels order not alphabet  
+
+```{r}
+annualtrip <- annualtrip %>% mutate(ride_length_min = as.integer( round( (ended_at-started_at)/60) ))
+annualtrip <- annualtrip %>% mutate(Week_Of_Day = weekdays(started_at,FALSE) )
+annualtrip <- annualtrip %>% mutate(month = months.Date(started_at,FALSE) )
+annualtrip$month <- ordered(annualtrip$month, levels=c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
+annualtrip$Week_Of_Day <- ordered(annualtrip$Week_Of_Day, levels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+
+```
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+
+## analyse data
+1- how should you organize your data to perform analysis on it? <br />
+2- has your data been properly formatted ? <br />
+3- what surprises did you discover in the data ? <br />
+4- what trends or relationships did you find in the data ? <br />
+5- how will these insights help answer your business questions? <br />
+
+**tasks** <br />
+1-aggregate your data so it's useful and accessible <br />
+2-organize and format data <br />
+3-perform calculations <br />
+4-identify trends and relationships <br />
+
+#### monitor ride_length
+<code>
+pivot tables  <br />    
+using method 1 <br />
+pt <- PivotTable$new() <br />
+pt$addData(bhmtrains) <br />
+pt$addColumnDataGroups("TrainCategory") <br />
+pt$addRowDataGroups("TOC") <br />
+pt$defineCalculation(calculationName="TotalTrains", summariseExpression="n()") <br />
+pt$renderPivot() <br />
+
+using method 2 : <br />
+t <- qpvt(annualtrip, "bicycle_type","customer_type",  "n()")  <br />
+
+</code>
+for more info : <br />
+<https://cran.r-project.org/web/packages/pivottabler/vignettes/v00-vignettes.html> <br />
+
+
+## relation_customer_bicycletype {.tabset}
+
+### pivot table 
+```{r}
+
+t <- qpvt(annualtrip, "bicycle_type","customer_type",  "n()") 
+relation_customer_bicycletype<- t$asDataFrame()
+ write.csv(relation_customer_bicycletype,"relation_customer_bicycletype.csv",row.names = TRUE)
+ print(relation_customer_bicycletype)
+ 
+
+```
+### plot
+```{r}
+ 
+   t <- annualtrip %>%  group_by(bicycle_type,customer_type) %>% summarise(countofcustomers =n())
+  ggplot(data = t,mapping =  aes(x= bicycle_type, y = countofcustomers,fill = customer_type)) + 
+  geom_bar( position = "dodge",stat = "identity")+ labs(title = "Most popular rideable bicycles" ) 
+
+```
+##  {-}
+
+
+depend on info customers have more interested in other bicycles in compare to past
+where was most interested in classic bicycles 
+relation_customer_ridelength
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## relation_customer_ride_length {.tabset}
+
+### summary
+```{r}
+summary(annualtrip$ride_length_min)
+```
+### pivot tables
+```{r}
+
+
+ t<- annualtrip  %>%  group_by(customer_type) %>% summarise(count = n(), avg = mean(ride_length_min) ,sum = sum(ride_length_min), sd = sd(ride_length_min) , var=var(ride_length_min))
+ 
+  # create summary table rows: ride_length_min ,col: customer_type values : count of trips
+  t <- qpvt(annualtrip, "ride_length_min","customer_type",  "n()")
+  # convert it to dataframe
+  relation_customer_ridelength <- t$asDataFrame()
+
+ # replacing null values with 0 so that we can handle data and viz
+  relation_customer_ridelength$casual [is.na( relation_customer_ridelength$casual )] <-   0
+  relation_customer_ridelength$member [is.na( relation_customer_ridelength$member )] <-   0
+  head(relation_customer_ridelength,60)
+# write.csv(relation_customer_ridelength,"summary_ridelength_customertype.csv",row.names = TRUE)
+
+```
+<br />
+
+### plot up to 255 min
+```{r}
+
+# when you present all data will be a problem because distribution of ride_length
+# one solution is normalization but i have focus on spotlight that's help me discover 
+# difference between casual and member
+# interest area to discover
+x1 <- relation_customer_ridelength[c(1:255),] 
+# we have cast  ride_length_min to integer because it contain Total as char
+ggplot(data = x1) + geom_smooth(mapping = aes(x= as.integer(row.names(x1)) ,y= casual,colour ="casual" ))+geom_smooth(mapping = aes(x= as.integer(row.names(x1)) ,y= member,colour  ="member" ) ) + scale_colour_manual("",  breaks = c("casual", "member"),values = c("red", "blue")) + labs(title = "trend users for trips up to 60 min")+ xlab("ride-length-min") +ylab("count of rides") 
+                                
+
+
+```
+
+<br />
+
+### plot more than 60 min
+```{r}
+x1 <- relation_customer_ridelength[c(255:500),]
+ 
+
+ggplot(data = x1) + geom_smooth(mapping = aes(x= as.integer(row.names(x1)) ,y= casual,colour ="casual" ))+geom_smooth(mapping = aes(x= as.integer(row.names(x1)) ,y= member,colour  ="member" ) ) + scale_colour_manual("",  breaks = c("casual", "member"),values = c("red", "blue")) + labs(title = "trend users for trips more than 60 min")+ xlab("ride-length-min") +ylab("count of rides") 
+```
+
+## {-}
+
+casual spend more time 30min in average riding bicycles whereas member spend 15m <br />
+casual spend sometimes longer riding hours or days. <br />
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## relation_weekday_customer { .tabset }
+
+### summary_week
+```{r}
+ t<- annualtrip  %>%  group_by(Week_Of_Day) %>% 
+  summarise( countofrides = n(), sumofrides = sum(ride_length_min),sd = sd(ride_length_min) ,   var=var(ride_length_min))
+ ## write.csv(t,"summary_week.csv",row.names = TRUE)
+```
+### pivot table
+```{r}
+
+  
+  n_week <- qpvt(annualtrip, "Week_Of_Day","customer_type",  "n()")
+  n_week <- n_week$asDataFrame()
+  n_week <- rename(n_week,count_of_casual = casual)
+  n_week <- rename(n_week,count_of_member = member)
+  n_week <- rename(n_week,count_of_customer = Total)
+ 
+ avg_week <- qpvt(annualtrip, "Week_Of_Day","customer_type", c("averageofrides" = "mean(ride_length_min)"))
+ avg_week <- avg_week$asDataFrame()
+
+ avg_week <- rename(avg_week,avg_ridelength_of_casual = casual)
+ avg_week <- rename(avg_week,avg_ridelength_of_member = member)
+ avg_week <- rename(avg_week,avg_ridelength_of_customer = Total)
+ week_summary <- data.frame(n_week,avg_week)
+ print(week_summary)
+#write.csv(week_summary,"week_summary_ride_customer.csv",row.names = TRUE)
+
+```
+
+### plot count rides during weekdays
+```{r}
+ t <- annualtrip %>%  group_by(Week_Of_Day,customer_type) %>% summarise(countofcustomers =n())
+t$Week_Of_Day <- ordered(t$Week_Of_Day, levels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+
+
+  ggplot(data = t , mapping = aes(x= Week_Of_Day, y = countofcustomers,fill= customer_type)) + 
+  geom_bar( stat = "identity") 
+```
+
+<br />
+
+### plot avg_ride_length during weekdays
+
+```{r}
+
+ t <- annualtrip %>%  group_by(Week_Of_Day,customer_type) %>% summarise(mean =mean(ride_length_min))
+t$Week_Of_Day <- ordered(t$Week_Of_Day, levels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+  ggplot(data = t , mapping = aes(x= Week_Of_Day, y = mean,fill= customer_type)) + 
+  geom_bar(position = "dodge" , stat = "identity") 
+  #title("average riding for customer during week")
+```
+
+## {-}
+
+casual are active in friday and weekends
+member are active in workday
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## traffic and relations {.tabset} 
+
+what we need ?
+station_name
+lat,lng
+traffic_begin_casual 
+traffic_begin_member
+traffic_begin_total
+traffic_end_casual 
+traffic_end_member
+traffic_end_total
+total_traffic_member
+total_traffic_casual 
+total_traffic 
+
+### summary stations
+```{r}
+trafficstart <- annualtrip %>% group_by(start_station_id) %>% drop_na() %>% count()
+trafficend <- annualtrip %>% group_by(end_station_id) %>%drop_na()%>%  count()
+
+id <- c(1:731,0)
+trafficstartbycustomer <- qpvt(annualtrip, "start_station_id", "customer_type", "n()")
+trafficstartbycustomer <- trafficstartbycustomer$asDataFrame()
+trafficstartbycustomer <- data.frame(id,trafficstartbycustomer)
+trafficstartbycustomer <- rename(trafficstartbycustomer,traffic_begin_casual = casual)
+trafficstartbycustomer <- rename(trafficstartbycustomer,traffic_begin_member = member)
+trafficstartbycustomer <- rename(trafficstartbycustomer,traffic_begin = Total)
+
+trafficendbycustomer <- qpvt(annualtrip, "end_station_id", "customer_type", "n()")
+trafficendbycustomer <- trafficendbycustomer$asDataFrame()
+trafficendbycustomer <- data.frame(id,trafficendbycustomer)
+trafficendbycustomer <- rename(trafficendbycustomer,traffic_end_casual = casual)
+trafficendbycustomer <- rename(trafficendbycustomer,traffic_end_member = member)
+trafficendbycustomer <- rename(trafficendbycustomer,traffic_end = Total)
+
+stations <- rbind(stations,0)  # only to merge process
+summary_stations <- data.frame(stations$id ,stations$end_station_name ,stations$lat,stations$lng ,stations$traffic ,trafficstartbycustomer$traffic_begin_casual,trafficstartbycustomer$traffic_begin_member,trafficstartbycustomer$traffic_begin,trafficendbycustomer$traffic_end_casual,trafficendbycustomer$traffic_end_member,trafficendbycustomer$traffic_end)
+head(summary_stations)
+ #write.csv(summary_stations,"summary_stations.csv",row.names = FALSE)
+
+```
+
+### plot
+in r we can't provide live graphs only image !!
+```{r}
+
+ stat <-  summary_stations[c(1:731),]  # only temp for min and max values
+ xmin <- min(stat$stations.lng)
+ xmax<- max(stat$stations.lng)
+ ymin <- min(stat$stations.lat)
+ ymax<- max(stat$stations.lat)
+ rm(stat)
+MainStates <- map_data("state")
+ggplot() +  geom_polygon( data=MainStates, aes(x=long, y=lat, group=group),
+                color="black", fill="lightblue" )+
+  geom_point(data=summary_stations, aes(x=stations.lng, y= stations.lat,size =stations.traffic),color='darkblue') +geom_sf(color = "black", fill = "lightgreen")+ coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE)
+ 
+```
+
+## {-}
+
+depend on traffic and previous graphs for traffic movement. 
+where are excepted member and casual to find and traffic is important
+to locate address of Advertisements 
+ <hr style="  border: 3px solid Lime; border-radius: 5px;">
+ 
+## monitoring months {.tabset}
+we don't need to monitoring seasons we can from month table do it or conclusion from months viz
+
+### summary month
+
+```{r}
+t<- annualtrip  %>%  group_by(month) %>% 
+  summarise( countofrides = n(), sumofrides = sum(ride_length_min),sd = sd(ride_length_min) ,   var=var(ride_length_min))
+  write.csv(t,"summary_month.csv",row.names = TRUE)
+```
+### pivot month
+```{r}
+
+  
+  
+  n_month <- qpvt(annualtrip, "month","customer_type",  "n()")
+  n_month <- n_month$asDataFrame()
+  n_month <- rename(n_month,count_of_casual = casual)
+  n_month <- rename(n_month,count_of_member = member)
+  n_month <- rename(n_month,count_of_customer = Total)
+  
+  avg_month <- qpvt(annualtrip, "month","customer_type", c("averageofrides" = "mean(ride_length_min)"))
+ avg_month <- avg_month$asDataFrame()
+
+
+ 
+ avg_month <- rename(avg_month,avg_ridelength_of_casual = casual)
+ avg_month <- rename(avg_month,avg_ridelength_of_member = member)
+ avg_month <- rename(avg_month,avg_ridelength_of_customer = Total)
+ month_summary <- data.frame(n_month,avg_month)
+ print(month_summary)
+#write.csv(month_summary,"month_summary_ride_customer.csv",row.names = TRUE)
+ 
+```
+
+
+
+### plot Total rides per month
+
+```{r}
+ t <- annualtrip %>%  group_by(month,customer_type) %>% summarise(countofcustomers =n()) %>% 
+ arrange(match(month, month.name))
+
+t$month <- ordered(t$month, levels=c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
+  ggplot(data = t , mapping = aes(x= month, y = countofcustomers,fill= customer_type)) + 
+  geom_bar(position = "dodge", stat = "identity") + theme(axis.text.x = element_text(angle = 90)) + labs(title = "Total rides per month", subtitle ="Casual V.S Members") + scale_fill_brewer(palette = "Pastel1") 
+```
+
+### average ride_length per month
+
+```{r}
+ t <- annualtrip %>%  group_by(month,customer_type) %>% summarise(mean =mean(ride_length_min))
+t$month <- ordered(t$month, levels=c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
+  ggplot(data = t , mapping = aes(x= month, y = mean,fill= customer_type)) + 
+  geom_bar(position = "dodge" , stat = "identity") + theme(axis.text.x = element_text(angle = 90)) + labs(title = "average ride_length per month", subtitle ="Casual V.S Members") + scale_fill_brewer(palette = "Pastel1") 
+```
+
+difference count of rides depend on weahter cold and hot seasons <br />
+7 hot ,2 mild ,3 cold  <br />
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+## {-}
+
+## total rides during week in month in year 
+
+```{r}
+
+annualtrip %>% 
+  group_by(Week_Of_Day, month, customer_type) %>% 
+  summarise(number_of_rides = n()) %>%
+  ggplot(aes(x=Week_Of_Day, y = number_of_rides, fill= customer_type)) + geom_col(position = "dodge", colour = "black") + scale_fill_brewer(palette = "Pastel1") + facet_wrap(~month)+ theme(axis.text.x = element_text(angle = 90)) + labs(title = "Total rides for the week", subtitle = "Casual V.S Members (Monthly)")  + ylab("Total Rides") + xlab("Day of Week")
+```
+
+
+
+
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+
+## total rides during week in month in year 
+
+```{r}
+
+annualtrip %>% 
+  group_by(bicycle_type, month, customer_type) %>% 
+  summarise(number_of_rides = n()) %>%
+  ggplot(aes(x=bicycle_type, y = number_of_rides, fill= customer_type)) + geom_col(position = "dodge", colour = "black") + scale_fill_brewer(palette = "Pastel1") + facet_wrap(~month)+ theme(axis.text.x = element_text(angle = 90)) + labs(title = "Total rides for bicycle types", subtitle = "Casual V.S Members (Monthly)")  + ylab("Total Rides") + xlab("bicycle_type")
+```
+
+
+
+when i want to analyse and visualization using summary tables and this two tables using 
+tableau or...
+
+```{r}
+colnames(annualtrip)
+annualtrip <- annualtrip %>% mutate(Date = as.Date(started_at) )
+t <- annualtrip %>% select(bicycle_type,customer_type,Date,Week_Of_Day ,ride_length_min )%>%   group_by(bicycle_type,customer_type,Date,Week_Of_Day,ride_length_min ) %>% summarise(count = n())
+write.csv(t,"summary_1.csv",row.names = FALSE)
+
+t2 <- annualtrip %>% select(bicycle_type,customer_type, start_station_id,end_station_id )%>%   group_by(bicycle_type,customer_type,start_station_id,end_station_id ) %>% summarise(count = n())%>% filter(count >50)
+write.csv(t,"summary_2.csv",row.names = FALSE)
+# write.csv(relation_customer_ridelength,"summary_ridelength_customertype.csv",row.names = TRUE)
+
+```
+
+## ACT PHASE
+
+
+### Conclusion
+* average of casual riders trips is near 30 min and they make longer trips (leisure) specially in
+weekends , unactive in winter <br />
+
+* average of member riders trips is near 15 min and they make short trips  specially in
+workdays  <br />
+casual spend sometimes longer riding  <br />
+
+2) Causal riders are more active during weekends <br />
+
+3) Causal riders engage in longer rides compared to members hours or days. <br />
+
+4) depend on traffic and previous graphs for traffic movement. 
+where are excepted member and casual to find and traffic is important
+to locate address of Advertisements <br />
+
+5) why are there difference between rideable bicycle during year !!
+<hr style="  border: 3px solid Lime; border-radius: 5px;">
+
+### Recommendations
+1) schedule good pricing depend on factors (riding time , cold and hot days/month during year) 
+
+ *   make to 15 min with 1 dollar and with more from 15 min 2 dollar.and so day ..month,year<br />
+  
+2)  we need to discover grow of interest in bicycles types so that we can also 
+   make limit on electric bicycle  <br />
+    so that we can attract more customer for month,season  annual member (need of customers)
+3)  make this campaign in summer using poster on bicycles where most movement for casual <br />
+    using our app platform to advertise or make survey <br />
+4)   web campaign isn't appropriate in this task  because they are already customers and big poster in     stations that have traffic day <br />
+say offer "save  70 % pro year with .... unlimited riding .....with special event " <br /> 
+
+5)  provide a new feature in app to customer for examples event,racing,.... <br />
+    
